@@ -1,19 +1,19 @@
-import exceptions.NoWorkoutAvailableException;
-
-import java.util.ArrayList;
 import java.util.Random;
 
 public class User {
     private String name;
-    private int workoutsCompleted = 0;
-    private Random randGen = new Random();
+    private int completedWorkoutCount;
+    private Random randGen;
 
     /**
      * Construct an instance of User.
+     *
      * @param name the preferred name of the user
      */
     public User(String name) {
         this.name = name;
+        this.completedWorkoutCount = 0;
+        this.randGen = new Random();
     }
 
     /**
@@ -30,14 +30,14 @@ public class User {
      *
      * @return number of workouts completed
      */
-    public int getWorkoutsCompleted() {
-        return workoutsCompleted;
+    public int getCompletedWorkoutCount() {
+        return completedWorkoutCount;
     }
 
     /**
      * Increment the user's number of workouts completed.
      */
-    public void incrementWorkoutCount() {
-        workoutsCompleted++;
+    public void incrementWorkoutCompletedCount() {
+        ++completedWorkoutCount;
     }
 }
