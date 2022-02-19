@@ -6,10 +6,10 @@ import java.util.ArrayList;
  */
 
 public class WorkoutManager {
-    ArrayList<WorkoutRoutine> workoutRoutines;
-    ArrayList<Workout> armWorkouts;
-    ArrayList<Workout> coreWorkouts;
-    ArrayList<Workout> legsWorkouts;
+    private ArrayList<WorkoutRoutine> workoutRoutines;
+    private ArrayList<Workout> armWorkouts;
+    private ArrayList<Workout> coreWorkouts;
+    private ArrayList<Workout> legsWorkouts;
 
     public WorkoutManager() {
         this.workoutRoutines = new ArrayList<>();
@@ -52,6 +52,7 @@ public class WorkoutManager {
 
     public void createRoutine(String mode) {
         WorkoutRoutine new_routine;
+
         switch (mode) {
             case "empty":
                 new_routine = new WorkoutRoutine();
@@ -68,6 +69,7 @@ public class WorkoutManager {
             default:
                 throw new IllegalStateException("Unexpected value: " + mode);
         }
+
         this.workoutRoutines.add(new_routine);
     }
 
