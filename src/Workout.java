@@ -8,9 +8,9 @@ public class Workout {
     private String name;
     private int repCount;
     private int setCount;
-    private double duration;
+    private long duration;
 
-    public Workout(String name, int setCount, int repCount, double duration) {
+    public Workout(String name, int setCount, int repCount, long duration) {
         this.name = name;
         this.setCount = setCount;
         this.repCount = repCount;
@@ -41,11 +41,11 @@ public class Workout {
         this.repCount = repCount;
     }
 
-    public double getDuration() {
+    public long getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 }
