@@ -62,11 +62,11 @@ public class WorkoutManager {
         this.workoutRoutines.add(new_routine);
     }
 
-    public boolean deleteWorkoutFromRoutine(int orderOfWorkout, WorkoutRoutine wr) {
+    public boolean deleteWorkoutFromRoutine(int orderOfWorkout, WorkoutRoutine workoutRoutine) {
         return true;
     }
 
-    public void addWorkoutToRoutine(Workout w) {
+    public void addWorkoutToRoutine(Workout workout) {
 
     }
 
