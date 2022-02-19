@@ -73,12 +73,26 @@ public class WorkoutManager {
         this.workoutRoutines.add(newRoutine);
     }
 
-    public boolean deleteWorkoutFromRoutine(int orderOfWorkout, WorkoutRoutine workoutRoutine) {
+    public boolean deleteWorkoutFromRoutine(Workout workout, WorkoutRoutine workoutRoutine) {
+        int indexOfWorkoutRoutine = this.workoutRoutines.indexOf(workoutRoutine);
+        WorkoutRoutine theworkoutroutine = this.workoutRoutines.get(indexOfWorkoutRoutine);
+        int indexOfWorkout = theworkoutroutine.indexOf(workout);
+        if(indexOfWorkout == -1){
+            return false;
+        }
+        Workout theworkout = theworkoutroutine.get(indexOfWorkout);
+        theworkoutroutine.remove(theworkout);
         return true;
     }
 
-    public void addWorkoutToRoutine(Workout workout) {
+    public void addWorkoutToRoutine(Workout workout, WorkoutRoutine workoutRoutine) {
+        int index = this.workoutRoutines.indexOf(workoutRoutine);
+        WorkoutRoutine theworkoutroutine = this.workoutRoutines.get(index);
+        theworkoutroutine.add(workout);
+    }
 
+    public void deleteWorkoutroutine(WorkoutRoutine workoutRoutine){
+        this.workoutRoutines.remove(workoutRoutine);
     }
 
     public ArrayList<WorkoutRoutine> getWorkoutRoutines() {
