@@ -54,16 +54,16 @@ public class WorkoutManager {
 
         switch (mode) {
             case "empty":
-                newRoutine = new WorkoutRoutine();
+                newRoutine = new WorkoutRoutine(List.of(), "empty");
                 break;
             case "legs":
-                newRoutine = new WorkoutRoutine(legsWorkouts);
+                newRoutine = new WorkoutRoutine(legsWorkouts, "legs");
                 break;
             case "core":
-                newRoutine = new WorkoutRoutine(coreWorkouts);
+                newRoutine = new WorkoutRoutine(coreWorkouts, "core");
                 break;
             case "arms":
-                newRoutine = new WorkoutRoutine(armWorkouts);
+                newRoutine = new WorkoutRoutine(armWorkouts, "arms");
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + mode);
