@@ -1,24 +1,30 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class WorkoutRoutine {
-    /**
-     * Container object including all of the workouts
-     */
+/**
+ * Container object including all of the workouts
+ */
 
-    // this will create an empty routine
-    ArrayList<WorkOut> routine;
-    public WorkoutRoutine(){
-        this.routine = new ArrayList<>();
+public class WorkoutRoutine extends ArrayList<Workout> {
+    String name;
+
+    public WorkoutRoutine() {
+        this(Collections.emptyList(), "");
     }
+
+    public WorkoutRoutine(String name) {
+        this(Collections.emptyList(), name);
+    }
+
+    public WorkoutRoutine(List<Workout> preparedWorkouts) {
+        this(preparedWorkouts, "");
+    }
+
     // this is a prepared recommended workout routine for user
-    public WorkoutRoutine(ArrayList<WorkOut> preparedworkout){
-        this.routine = preparedworkout;
-    }
-    public void addWorkOut(WorkOut w){
-        this.routine.add(w);
-    }
-    public void deleteWorkout(WorkOut w){
-        this.routine.remove(w);
+    public WorkoutRoutine(List<Workout> preparedWorkouts, String name) {
+        super(preparedWorkouts);
+
+        this.name = name;
     }
 }
