@@ -65,7 +65,7 @@ public class WorkoutManager implements Serializable{
         return workouts;
     }
 
-    public WorkoutRoutine createRoutine(String mode, String name) {
+    public void createRoutine(String mode, String name) {
         /**
          * each workout routine must have a unique name
          */
@@ -88,7 +88,6 @@ public class WorkoutManager implements Serializable{
         }
 
         this.workoutRoutines.add(newRoutine);
-        return newRoutine;
     }
 
     public boolean deleteWorkoutFromRoutine(Workout workout, WorkoutRoutine workoutRoutine) {
