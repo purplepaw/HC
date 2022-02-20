@@ -22,6 +22,7 @@ GButton toMenu;
 
 UiBooster booster;
 PImage logo;
+PImage runner;
 
 ArrayList<WorkoutRoutine> routines;
 WorkoutRoutine routine;
@@ -58,7 +59,7 @@ void setup() {
   editButtons = new ArrayList<GButton>();
   
   for (int i = 0; i < 10; ++i) {
-    GButton button = new GButton(this, 2.15 * width / 8, 1.5 * height / 8 + i * height / 16, width / 8, 0.5 * height / 8);
+    GButton button = new GButton(this, width / 3 - width / 16, 2 * height / 8 + i * height / 16, width / 8, 0.475 * height / 8);
     button.setText("Begin Workout " + i);
     button.setFont(new Font("Times New Roman", Font.BOLD, 28));
     button.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
@@ -66,7 +67,7 @@ void setup() {
     button.setVisible(false);
     workoutButtons.add(button);
     
-    button = new GButton(this, 5 * width / 8, 1.5 * height / 8 + i * height / 16, width / 8, 0.5 * height / 8);
+    button = new GButton(this, 2 * width / 3 - width / 16, 2 * height / 8 + i * height / 16, width / 8, 0.475 * height / 8);
     button.setText("Edit");
     button.setFont(new Font("Times New Roman", Font.BOLD, 28));
     button.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
@@ -136,8 +137,13 @@ void setup() {
   
   textAlign(CENTER, CENTER);
   
-  // Loads in logo to be drawn on menu
+  // load in logo to be drawn on menu
+  // source: http://www.stickpng.com/img/objects/weights/weights-clipart
   logo = loadImage("logo.png");
+  
+  // load in runner to be drawn on user dashboard
+  // source: https://www.emojipng.com/preview/12530385
+  runner = loadImage("runner.png");
   imageMode(CENTER);
 }
 
@@ -219,7 +225,8 @@ void draw() {
   if (state == 2) {
        textSize(75);
        text("Hello, " + name + "!", width/2, height/12);
-       line(width/8, 1.5 * height/12 + 1, 7 * width/8, 1.5 * height/12 + 3);
+       line(width/8, 1.65 * height/12 + 5, 7 * width/8, 1.5 * height/12 + 3);
+       image(runner, width / 2, height / 2, runner.width / 2.9, runner.height / 2.9); 
        
     for (int i = 0; i < 10; ++i) {
       workoutButtons.get(i).setText(routines.get(i).name);   
