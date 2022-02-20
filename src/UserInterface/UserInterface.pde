@@ -5,7 +5,12 @@ import uibooster.model.*;
 // Constants
 int Y_AXIS = 1;
 int X_AXIS = 2;
+
 GButton start;
+GButton legWorkout;
+GButton coreWorkout;
+GButton armWorkout;
+
 UiBooster booster;
 
 // Global Variable
@@ -24,7 +29,17 @@ void setup() {
   G4P.setGlobalColorScheme(GCScheme.CYAN_SCHEME);
   
   start = new GButton(this, 3.5 * width / 8, 1.5 * height / 8, width / 8, 0.5 * height / 8);
+  start.setText("Start");
+  start.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  start.addEventHandler(this, "startButton");
   start.setVisible(false);
+  
+  legWorkout = new GButton(this, 3.5 * width / 8, 1.5 * height / 8, width / 8, 0.5 * height / 8);
+  legWorkout.setText("Begin Leg Workout");
+  legWorkout.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  legWorkout.addEventHandler(this, "legWorkoutStart");
+  legWorkout.setVisible(false);
+  
   textAlign(CENTER, CENTER);
 }
 
@@ -41,14 +56,14 @@ void draw() {
     if (state == 0) {
         // Button configuration
         start.setVisible(true);
-        start.setText("Start");
-        start.setLocalColorScheme(GCScheme.BLUE_SCHEME);
-        start.addEventHandler(this, "button_test_click");
     } else if (state == 1) {
        // TODO: check if user already exists, otherwise prompt for name
        String name = new UiBooster().showTextInputDialog("What is your name?");
        // TODO: create User entity
        state = 2;
+    } else if (state == 2) {
+        // User Dashboard Option Buttons
+        
     }
   }
   
@@ -86,6 +101,10 @@ void setGradient(int x, int y, float w, float h, color c1, color c2, int axis ) 
 }
 
 // function executed when start is pressed
-public void button_test_click(GButton button, GEvent event) {
+public void startButton(GButton button, GEvent event) {
+   state = 1; 
+}
+
+public void legWorkoutStart(GButton button, GEvent event) {
    state = 1; 
 }
