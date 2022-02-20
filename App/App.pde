@@ -175,13 +175,13 @@ void draw() {
         // Button configuration
         start.setVisible(true);
     } else if (state == 1) {
-      String[] strings = loadStrings("settings.txt");
+      String[] strings = loadStrings(dataPath("settings.txt"));
       
       if (strings == null) {
          name = new UiBooster().showTextInputDialog("What is your name?");
-         saveStrings("settings.txt", new String[] { name });
+         saveStrings(dataPath("settings.txt"), new String[] { name });
       } else {
-        name = loadStrings("settings.txt")[0];
+        name = loadStrings(dataPath("settings.txt"))[0];
       }
        state = 2;
     } else if (state == 2) {
