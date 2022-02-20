@@ -239,7 +239,6 @@ void draw() {
        thread = new Thread() {
          public void run() {
            WorkoutRoutineAudioSource source = new WorkoutRoutineAudioSource(routine);
-           text(source.instruction, width/2, height/2);
            source.play();
          }
        };
@@ -341,8 +340,12 @@ public void unitEdit(int index) {
       repCount2 = new UiBooster().showTextInputDialog("Number of reps? (Pick between 1 and 20)");
   }
   int repCount = parseInt(repCount2);
-  long duration = parseInt(new UiBooster().showTextInputDialog("Duration (in milliseconds)?"));
-  
+  String duration2 = "";
+  while (num_list2.contains(duration2) == false){
+      duration2 = new UiBooster().showTextInputDialog("Duration (in seconds between 1 and 20)?");
+  }
+  long duration = parseInt(duration2);
+  duration = duration*1000;
   Workout workout = new Workout(name, setCount, repCount, duration);
 
   if (index < routine.size())

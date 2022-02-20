@@ -27,9 +27,9 @@ public class WorkoutManager implements Serializable{
     }
 
     private List<Workout> createLegWorkouts() {
-        Workout leg1 = createWorkout("Squats", 10, 3, 5000);
-        Workout leg2 = createWorkout("Lunges", 10, 3, 5000);
-        Workout leg3 = createWorkout("Knee ups", 10, 3, 5000);
+        Workout leg1 = createWorkout("Squats", 10, 3, 10000);
+        Workout leg2 = createWorkout("Lunges", 10, 3, 10000);
+        Workout leg3 = createWorkout("Knee ups", 10, 3, 10000);
 
         ArrayList<Workout> workouts = new ArrayList<Workout>();
         workouts.add(leg1);
@@ -40,9 +40,9 @@ public class WorkoutManager implements Serializable{
     }
 
     private List<Workout> createCoreWorkouts() {
-        Workout core1 = createWorkout("Sit ups", 10, 3, 5000);
-        Workout core2 = createWorkout("Crunches", 10, 3, 5000);
-        Workout core3 = createWorkout("Russian Twist", 10, 3, 5000);
+        Workout core1 = createWorkout("Sit ups", 10, 3, 10000);
+        Workout core2 = createWorkout("Crunches", 10, 3, 10000);
+        Workout core3 = createWorkout("Russian Twist", 10, 3, 10000);
 
         ArrayList<Workout> workouts = new ArrayList<Workout>();
         workouts.add(core1);
@@ -53,9 +53,9 @@ public class WorkoutManager implements Serializable{
     }
 
     private List<Workout> createArmWorkouts() {
-        Workout arm1 = createWorkout("Push Up", 10, 3, 5000);
-        Workout arm2 = createWorkout("Arm Dips", 10, 3, 5000);
-        Workout arm3 = createWorkout("Bicep Curls with weights", 10, 3, 5000);
+        Workout arm1 = createWorkout("Push Up", 10, 3, 10000);
+        Workout arm2 = createWorkout("Arm Dips", 10, 3, 10000);
+        Workout arm3 = createWorkout("Bicep Curls with weights", 10, 3, 10000);
 
         ArrayList<Workout> workouts = new ArrayList<Workout>();
         workouts.add(arm1);
