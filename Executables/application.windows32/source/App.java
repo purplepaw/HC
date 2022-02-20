@@ -145,7 +145,7 @@ public void setup() {
   unitButtons = new ArrayList<GButton>();
   
   for (int i = 0; i < 10; ++i) {
-    GButton button = new GButton(this, 3.5f * width / 8, 1.5f * height / 8 + i * height / 16, width / 8, 0.5f * height / 8);
+    GButton button = new GButton(this, 3.5f * width / 8, 1.5f * height / 8 + i * height / 16, width / 8, 0.475f * height / 8);
     button.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
     button.setFont(new Font("Times New Roman", Font.BOLD, 28));
     button.addEventHandler(this, "unitEdit" + i);
