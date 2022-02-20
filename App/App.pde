@@ -298,6 +298,11 @@ public void startButton(GButton button, GEvent event) {
 }
 
 public void workoutStart(int index) {
+  if (routines.get(index).isEmpty()) {
+    new UiBooster().showErrorDialog("The selected workout routine is empty! Please populate it with some workouts.", "Empty routine");
+    return;
+  }
+
   routine = routines.get(index);
   state = 3;
 }
