@@ -10,7 +10,7 @@ public class WorkoutGateway {
      * Takes A List of user objects and saves them to a.ser file.
      * @param list: The List of WorkoutRoutines to be saved
      */
-    public void saveUserMap(ArrayList<WorkoutRoutine> list){
+    public void saveWorkoutList(ArrayList<WorkoutRoutine> list){
         try {
             FileOutputStream fileOut = new FileOutputStream(file);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);

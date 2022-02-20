@@ -1,10 +1,13 @@
+import java.io.Serializable;
+
 /**
  * This file contains the implementation for the workout class which
  * consists of the workout name, reps, and sets.
  * possibility of the duration of the workout
  */
 
-public class Workout {
+
+public class Workout implements Serializable{
     private String name;
     private int repCount;
     private int setCount;

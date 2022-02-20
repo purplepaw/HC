@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * This Class manages a workout routine and adds workouts to the
  * specific workout routine
  */
 
-public class WorkoutManager {
+public class WorkoutManager implements Serializable{
     private ArrayList<WorkoutRoutine> workoutRoutines;
 
     private List<Workout> armWorkouts;
@@ -49,29 +50,30 @@ public class WorkoutManager {
         return List.of(arm1, arm2, arm3);
     }
 
-    public void createRoutine(String mode, String name) {
+    public WorkoutRoutine createRoutine(String mode, String name) {
         /**
          * each workout routine must have a unique name
          */
         WorkoutRoutine newRoutine;
 
-        switch (mode) {
-            case "empty":
-                newRoutine = new WorkoutRoutine(List.of(), name);
-                break;
-            case "legs":
-                newRoutine = new WorkoutRoutine(legsWorkouts, name);
-                break;
-            case "core":
-                newRoutine = new WorkoutRoutine(coreWorkouts, name);
-                break;
-            case "arms":
-                newRoutine = new WorkoutRoutine(armWorkouts, name);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + mode);
+        if (mode.equals("empty")) {
+            newRoutine = new WorkoutRoutine(List.of(), name);
         }
+        else if (mode.equals("legs")){
+            newRoutine = new WorkoutRoutine(legsWorkouts, name);
+        }
+        else if (mode.equals("core")){
+            newRoutine = new WorkoutRoutine(coreWorkouts, name);
+        }
+        else if (mode.equals("arms")){
+            newRoutine = new WorkoutRoutine(armWorkouts, name);
+        }
+        else{
+            throw new IllegalStateException("Unexpected value: " + mode);
+        }
+
         this.workoutRoutines.add(newRoutine);
+        return newRoutine;
     }
 
     public boolean deleteWorkoutFromRoutine(Workout workout, WorkoutRoutine workoutRoutine) {
