@@ -1,0 +1,5 @@
+#!/bin/sh
+
+APPDIR=$(readlink -f "$0")
+APPDIR=$(dirname "$APPDIR")
+java -Djna.nosys=true -Djava.library.path="$APPDIR:$APPDIR/lib" -cp "$APPDIR:$APPDIR/lib/cmudict04.jar:$APPDIR/lib/cmulex.jar:$APPDIR/lib/cmutimelex.jar:$APPDIR/lib/cmu_time_awb.jar:$APPDIR/lib/cmu_us_kal.jar:$APPDIR/lib/en_us.jar:$APPDIR/lib/freetts-jsapi10.jar:$APPDIR/lib/freetts.jar:$APPDIR/lib/jsapi.jar:$APPDIR/lib/mbrola.jar:$APPDIR/lib/App.jar:$APPDIR/lib/core.jar:$APPDIR/lib/jogl-all.jar:$APPDIR/lib/gluegen-rt.jar:$APPDIR/lib/jogl-all-natives-linux-aarch64.jar:$APPDIR/lib/gluegen-rt-natives-linux-aarch64.jar:$APPDIR/lib/G4P.jar:$APPDIR/lib/annotations-16.0.1.jar:$APPDIR/lib/apiguardian-api-1.1.0.jar:$APPDIR/lib/colorpicker-1.1.jar:$APPDIR/lib/darcula-2018.2.jar:$APPDIR/lib/filters-2.0.235.jar:$APPDIR/lib/swing-worker-1.1.jar:$APPDIR/lib/swingx-1.6.1.jar:$APPDIR/lib/UiBooster.jar" App "$@"
