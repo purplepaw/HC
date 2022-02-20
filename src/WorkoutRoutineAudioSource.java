@@ -35,7 +35,7 @@ public class WorkoutRoutineAudioSource {
     public static void main(String[] args) {
         var manager = new WorkoutManager();
 
-        manager.createRoutine("legs");
+        manager.createRoutine("legs", "My leg Workout");
 
         var source = new WorkoutRoutineAudioSource(manager.getWorkoutRoutines().get(0));
 
