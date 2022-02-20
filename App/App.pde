@@ -106,7 +106,7 @@ void setup() {
     unitButtons.add(button);
   }
   
-  toMenu = new GButton(this, 3.5 * width / 8, 7.5 * height / 8, width / 8, 0.5 * height / 8);
+  toMenu = new GButton(this, 3.5 * width / 8, 7 * height / 8, width / 8, 0.5 * height / 8);
   toMenu.setText("Main menu");
   toMenu.setFont(new Font("Times New Roman", Font.BOLD, 28));
   toMenu.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
@@ -324,28 +324,29 @@ public void workoutEdit9(GButton button, GEvent event) { workoutEdit(9); }
 
 public void nameEdit(GButton button, GEvent event) {
   String name = new UiBooster().showTextInputDialog("Name of this workout?");
+  if (name.equals("") || name == null)
+    return;
   routine.name = name;
 }
 
 public void unitEdit(int index) {
   String name = new UiBooster().showTextInputDialog("Name of this workout?");
-  String setCount2 = "";
-  ArrayList <String> num_list = new ArrayList<String>(Arrays.asList("1","2","3", "4", "5", "6", "7", "8", "9", "10"));
-  while (num_list.contains(setCount2) == false) {
-  setCount2 = new UiBooster().showTextInputDialog("Number of sets? (Pick between 1 and 10)");}
-  int setCount = parseInt(setCount2);
-  ArrayList <String> num_list2 = new ArrayList<String>(Arrays.asList("1","2","3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"));
-  String repCount2 = "";
-  while (num_list2.contains(repCount2) == false) {
-      repCount2 = new UiBooster().showTextInputDialog("Number of reps? (Pick between 1 and 20)");
-  }
-  int repCount = parseInt(repCount2);
-  String duration2 = "";
-  while (num_list2.contains(duration2) == false){
-      duration2 = new UiBooster().showTextInputDialog("Duration (in seconds between 1 and 20)?");
-  }
-  long duration = parseInt(duration2);
-  duration = duration*1000;
+  int setCount, repCount;
+  long duration;
+
+  if (name.equals("") || name == null)
+    return;
+
+  do {
+      setCount = parseInt(new UiBooster().showTextInputDialog("Number of sets? (Pick between 1 and 10)")); 
+  } while (!(1 <= setCount && setCount <= 10));
+
+  do {
+      repCount = parseInt(new UiBooster().showTextInputDialog("Number of reps? (Pick between 1 and 20)")); 
+  } while (!(1 <= repCount && repCount <= 20));
+
+  duration = parseInt(new UiBooster().showTextInputDialog("Duration (in seconds)?")) * 1000;
+
   Workout workout = new Workout(name, setCount, repCount, duration);
 
   if (index < routine.size())
