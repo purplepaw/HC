@@ -49,26 +49,28 @@ public class WorkoutManager {
         return List.of(arm1, arm2, arm3);
     }
 
-    public void createRoutine(String mode) {
+    public void createRoutine(String mode, String name) {
+        /**
+         * each workout routine must have a unique name
+         */
         WorkoutRoutine newRoutine;
 
         switch (mode) {
             case "empty":
-                newRoutine = new WorkoutRoutine(List.of(), "empty");
+                newRoutine = new WorkoutRoutine(List.of(), name);
                 break;
             case "legs":
-                newRoutine = new WorkoutRoutine(legsWorkouts, "legs");
+                newRoutine = new WorkoutRoutine(legsWorkouts, name);
                 break;
             case "core":
-                newRoutine = new WorkoutRoutine(coreWorkouts, "core");
+                newRoutine = new WorkoutRoutine(coreWorkouts, name);
                 break;
             case "arms":
-                newRoutine = new WorkoutRoutine(armWorkouts, "arms");
+                newRoutine = new WorkoutRoutine(armWorkouts, name);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + mode);
         }
-
         this.workoutRoutines.add(newRoutine);
     }
 
@@ -84,9 +86,11 @@ public class WorkoutManager {
         return true;
     }
 
-    public void addWorkoutToRoutine(Workout workout, WorkoutRoutine workoutRoutine) {
+    public void addWorkoutToRoutine(String workoutName, int reps, int sets, int duration,
+                                    WorkoutRoutine workoutRoutine) {
         int index = this.workoutRoutines.indexOf(workoutRoutine);
         WorkoutRoutine theworkoutroutine = this.workoutRoutines.get(index);
+        Workout workout = createWorkout(workoutName, reps, sets, duration);
         theworkoutroutine.add(workout);
     }
 
@@ -96,5 +100,18 @@ public class WorkoutManager {
 
     public ArrayList<WorkoutRoutine> getWorkoutRoutines() {
         return this.workoutRoutines;
+    }
+
+    public static void main(String[] args) {
+        WorkoutManager workoutManager = new WorkoutManager();
+        workoutManager.createRoutine("empty", "My workout");
+        ArrayList<WorkoutRoutine> array = workoutManager.getWorkoutRoutines();
+        WorkoutRoutine wr = array.get(0);
+        workoutManager.addWorkoutToRoutine("Push up", 5, 3, 20, wr);
+        Workout w = wr.get(0);
+        workoutManager.deleteWorkoutFromRoutine(w, wr);
+        workoutManager.deleteWorkoutroutine(wr);
+
+
     }
 }
