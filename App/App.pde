@@ -1,6 +1,8 @@
 import g4p_controls.*;
 import uibooster.*;
 import uibooster.model.*;
+import java.awt.Font;
+ import java.awt.*;
 
 // Constants
 int Y_AXIS = 1;
@@ -43,8 +45,9 @@ void setup() {
   frameRate(30); // limit framerate to 30 frames per second to reduce impact on system
   G4P.setGlobalColorScheme(GCScheme.CYAN_SCHEME);
   
-  start = new GButton(this, 3.5 * width / 8, 1.5 * height / 8, width / 8, 0.5 * height / 8);
+  start = new GButton(this, 3.3 * width / 8, 5 * height / 8, 2 * width / 8, 1 * height / 8);
   start.setText("Start");
+  start.setFont(new Font("Times New Roman", Font.BOLD, 60));
   start.setLocalColorScheme(GCScheme.BLUE_SCHEME);
   start.addEventHandler(this, "startButton");
   start.setVisible(false);
@@ -130,7 +133,7 @@ void setup() {
   **/
 void draw() {
   textAlign(CENTER, CENTER);
-  setGradient(0, 0, width, height, color(167, 242, 240), color(0, 102, 153), X_AXIS);
+  setGradient(0, 0, width, height, color(245, 39, 7), color(245, 154, 7), X_AXIS);
   if (state != oldState) {
     oldState = state;
     start.setVisible(false);
