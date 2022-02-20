@@ -20,6 +20,7 @@ ArrayList<GButton> unitButtons;
 GButton toMenu;
 
 UiBooster booster;
+PImage logo;
 
 ArrayList<WorkoutRoutine> routines;
 WorkoutRoutine routine;
@@ -45,7 +46,7 @@ void setup() {
   frameRate(30); // limit framerate to 30 frames per second to reduce impact on system
   G4P.setGlobalColorScheme(GCScheme.CYAN_SCHEME);
   
-  start = new GButton(this, 3.3 * width / 8, 5 * height / 8, 2 * width / 8, 1 * height / 8);
+  start = new GButton(this, 2.8 * width / 8, 5 * height / 8, 2 * width / 8, 1 * height / 8);
   start.setText("Start");
   start.setFont(new Font("Times New Roman", Font.BOLD, 60));
   start.setLocalColorScheme(GCScheme.BLUE_SCHEME);
@@ -126,6 +127,10 @@ void setup() {
   }
   
   textAlign(CENTER, CENTER);
+  
+  // Loads in logo to be drawn on menu
+  logo = loadImage("logo.png");
+  imageMode(CENTER);
 }
 
 /**
@@ -196,6 +201,11 @@ void draw() {
       
       toMenu.setVisible(true);
     }
+  }
+  
+  // logo display
+  if (state == 0) {
+      image(logo, width / 2, height / 4, logo.width / 2.9, logo.height / 2.9); 
   }
   
   if (state == 2) {
