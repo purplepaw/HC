@@ -51,4 +51,8 @@ public class Workout implements Serializable{
     public void setDuration(long duration) {
         this.duration = duration;
     }
+
+    public String toString() {
+       return this.getSetCount() + " sets of " + this.getRepCount() + ' ' + this.getName();
+    }
 }

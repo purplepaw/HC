@@ -3,6 +3,7 @@ import uibooster.*;
 import uibooster.model.*;
 import java.awt.Font;
  import java.awt.*;
+import java.util.*;
 
 // Constants
 int Y_AXIS = 1;
@@ -46,10 +47,10 @@ void setup() {
   frameRate(30); // limit framerate to 30 frames per second to reduce impact on system
   G4P.setGlobalColorScheme(GCScheme.CYAN_SCHEME);
   
-  start = new GButton(this, 2.8 * width / 8, 5 * height / 8, 2 * width / 8, 1 * height / 8);
+  start = new GButton(this, (width / 2) - (width / 8), 5 * height / 8, 2 * width / 8, 1 * height / 8);
   start.setText("Start");
   start.setFont(new Font("Times New Roman", Font.BOLD, 60));
-  start.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  start.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
   start.addEventHandler(this, "startButton");
   start.setVisible(false);
 
@@ -57,35 +58,40 @@ void setup() {
   editButtons = new ArrayList<GButton>();
   
   for (int i = 0; i < 10; ++i) {
-    GButton button = new GButton(this, 3.5 * width / 8, 1.5 * height / 8 + i * height / 16, width / 8, 0.5 * height / 8);
+    GButton button = new GButton(this, 2.15 * width / 8, 1.5 * height / 8 + i * height / 16, width / 8, 0.5 * height / 8);
     button.setText("Begin Workout " + i);
-    button.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+    button.setFont(new Font("Times New Roman", Font.BOLD, 28));
+    button.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
     button.addEventHandler(this, "workoutStart" + i);
     button.setVisible(false);
     workoutButtons.add(button);
     
     button = new GButton(this, 5 * width / 8, 1.5 * height / 8 + i * height / 16, width / 8, 0.5 * height / 8);
     button.setText("Edit");
-    button.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+    button.setFont(new Font("Times New Roman", Font.BOLD, 28));
+    button.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
     button.addEventHandler(this, "workoutEdit" + i);
     button.setVisible(false);
     editButtons.add(button);
   }
   
-  workoutRepeat = new GButton(this, 3.5 * width / 8, 3 * height / 8, width / 8, 0.5 * height / 8);
+  workoutRepeat = new GButton(this, 3.5 * width / 8, 3.5 * height / 8, width / 8, 0.5 * height / 8);
   workoutRepeat.setText("Toggle repeat");
+  workoutRepeat.setFont(new Font("Times New Roman", Font.BOLD, 28));
   workoutRepeat.setLocalColorScheme(GCScheme.BLUE_SCHEME);
   workoutRepeat.addEventHandler(this, "workoutRepeatNow");
   workoutRepeat.setVisible(false);
   
-  workoutStop = new GButton(this, 3.5 * width / 8, 4.5 * height / 8, width / 8, 0.5 * height / 8);
+  workoutStop = new GButton(this, 3.5 * width / 8, 5 * height / 8, width / 8, 0.5 * height / 8);
   workoutStop.setText("Stop workout");
+  workoutStop.setFont(new Font("Times New Roman", Font.BOLD, 28));
   workoutStop.setLocalColorScheme(GCScheme.BLUE_SCHEME);
   workoutStop.addEventHandler(this, "workoutStopNow");
   workoutStop.setVisible(false);
 
   nameChange = new GButton(this, 3.5 * width / 8, 0.5 * height / 8, width / 8, 0.5 * height / 8);
-  nameChange.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  nameChange.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+  nameChange.setFont(new Font("Times New Roman", Font.BOLD, 28));
   nameChange.addEventHandler(this, "nameEdit");
   nameChange.setVisible(false);
   
@@ -93,7 +99,8 @@ void setup() {
   
   for (int i = 0; i < 10; ++i) {
     GButton button = new GButton(this, 3.5 * width / 8, 1.5 * height / 8 + i * height / 16, width / 8, 0.5 * height / 8);
-    button.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+    button.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+    button.setFont(new Font("Times New Roman", Font.BOLD, 28));
     button.addEventHandler(this, "unitEdit" + i);
     button.setVisible(false);
     unitButtons.add(button);
@@ -101,7 +108,8 @@ void setup() {
   
   toMenu = new GButton(this, 3.5 * width / 8, 7.5 * height / 8, width / 8, 0.5 * height / 8);
   toMenu.setText("Main menu");
-  toMenu.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  toMenu.setFont(new Font("Times New Roman", Font.BOLD, 28));
+  toMenu.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
   toMenu.addEventHandler(this, "toMenuNow");
   toMenu.setVisible(false);
 
@@ -231,6 +239,7 @@ void draw() {
        thread = new Thread() {
          public void run() {
            WorkoutRoutineAudioSource source = new WorkoutRoutineAudioSource(routine);
+           text(source.instruction, width/2, height/2);
            source.play();
          }
        };
@@ -243,12 +252,15 @@ void draw() {
     nameChange.setText(routine.name);
     
     for (int i = 0; i < 10; ++i) {
-      if (i < routine.size())
+      if (i < routine.size()) {
         unitButtons.get(i).setText(routine.get(i).getName());
-      else
+       }
+      else {
         unitButtons.get(i).setText("Empty workout");
     }
   }
+} 
+
 }
 
 /** From: https://processing.org/examples/lineargradient.html */
@@ -318,8 +330,17 @@ public void nameEdit(GButton button, GEvent event) {
 
 public void unitEdit(int index) {
   String name = new UiBooster().showTextInputDialog("Name of this workout?");
-  int setCount = parseInt(new UiBooster().showTextInputDialog("Number of sets?"));
-  int repCount = parseInt(new UiBooster().showTextInputDialog("Number of reps?"));
+  String setCount2 = "";
+  ArrayList <String> num_list = new ArrayList<String>(Arrays.asList("1","2","3", "4", "5", "6", "7", "8", "9", "10"));
+  while (num_list.contains(setCount2) == false) {
+  setCount2 = new UiBooster().showTextInputDialog("Number of sets? (Pick between 1 and 10)");}
+  int setCount = parseInt(setCount2);
+  ArrayList <String> num_list2 = new ArrayList<String>(Arrays.asList("1","2","3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"));
+  String repCount2 = "";
+  while (num_list2.contains(repCount2) == false) {
+      repCount2 = new UiBooster().showTextInputDialog("Number of reps? (Pick between 1 and 20)");
+  }
+  int repCount = parseInt(repCount2);
   long duration = parseInt(new UiBooster().showTextInputDialog("Duration (in milliseconds)?"));
   
   Workout workout = new Workout(name, setCount, repCount, duration);
