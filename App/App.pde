@@ -343,3 +343,10 @@ public void workoutStopNow(GButton button, GEvent event) {
   routine = null;
   state = 2; 
 }
+
+/**
+ * Empty function to suppress G4P suggestion. 
+*/
+public void handleButtonEvents(GButton button, GEvent event) {
+  return;
+}
