@@ -31,7 +31,12 @@ public class WorkoutManager implements Serializable{
         Workout leg2 = createWorkout("Lunges", 10, 3, 5000);
         Workout leg3 = createWorkout("Knee ups", 10, 3, 5000);
 
-        return List.of(leg1, leg2, leg3);
+        ArrayList<Workout> workouts = new ArrayList<Workout>();
+        workouts.add(leg1);
+        workouts.add(leg2);
+        workouts.add(leg3);
+
+        return workouts;
     }
 
     private List<Workout> createCoreWorkouts() {
@@ -39,7 +44,12 @@ public class WorkoutManager implements Serializable{
         Workout core2 = createWorkout("Crunches", 10, 3, 5000);
         Workout core3 = createWorkout("Russian Twist", 10, 3, 5000);
 
-        return List.of(core1, core2, core3);
+        ArrayList<Workout> workouts = new ArrayList<Workout>();
+        workouts.add(core1);
+        workouts.add(core2);
+        workouts.add(core3);
+
+        return workouts;
     }
 
     private List<Workout> createArmWorkouts() {
@@ -47,7 +57,12 @@ public class WorkoutManager implements Serializable{
         Workout arm2 = createWorkout("Arm Dips", 10, 3, 5000);
         Workout arm3 = createWorkout("Bicep Curls with weights", 10, 3, 5000);
 
-        return List.of(arm1, arm2, arm3);
+        ArrayList<Workout> workouts = new ArrayList<Workout>();
+        workouts.add(arm1);
+        workouts.add(arm2);
+        workouts.add(arm3);
+
+        return workouts;
     }
 
     public WorkoutRoutine createRoutine(String mode, String name) {
@@ -57,7 +72,7 @@ public class WorkoutManager implements Serializable{
         WorkoutRoutine newRoutine;
 
         if (mode.equals("empty")) {
-            newRoutine = new WorkoutRoutine(List.of(), name);
+            newRoutine = new WorkoutRoutine(new ArrayList<Workout>(), name);
         }
         else if (mode.equals("legs")){
             newRoutine = new WorkoutRoutine(legsWorkouts, name);

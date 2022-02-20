@@ -4,14 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WorkoutGateway {
-    private File file = new File("src/workoutFile.ser");
-
     /**
      * Takes A List of user objects and saves them to a.ser file.
      * @param list: The List of WorkoutRoutines to be saved
      */
-    public void saveWorkoutList(ArrayList<WorkoutRoutine> list){
+    public void saveWorkoutList(ArrayList<WorkoutRoutine> list, String data, String path){
         try {
+            File directory = new File(data);
+            directory.mkdir();
+            File file = new File(path);
+            file.createNewFile();
             FileOutputStream fileOut = new FileOutputStream(file);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(list);
@@ -26,9 +28,10 @@ public class WorkoutGateway {
      * Checks path to the .ser file where the List of WorkoutRoutines is stored and
      * Deserializes it to return a list of WorkoutRoutines to the program
      */
-    public ArrayList<WorkoutRoutine> readRoutineList(){
+    public ArrayList<WorkoutRoutine> readRoutineList(String path){
         ArrayList<WorkoutRoutine> routinelist = null;
         try {
+            File file = new File(path);
             FileInputStream fileIn = new FileInputStream(file);
             ObjectInputStream in = new ObjectInputStream(fileIn);
             routinelist = (ArrayList<WorkoutRoutine>) in.readObject();

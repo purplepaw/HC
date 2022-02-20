@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class WorkoutGatewayTest {
+public class WorkoutGatewayTest {/*
     public static void main(String[] args) {
         WorkoutGateway gateway = new WorkoutGateway();
         WorkoutManager manager = new WorkoutManager();
@@ -17,5 +17,5 @@ public class WorkoutGatewayTest {
         gateway.saveWorkoutList(list);
         ArrayList<WorkoutRoutine> l2 = gateway.readRoutineList();
         System.out.println(l2.size());
-    }
+    }*/
 }
