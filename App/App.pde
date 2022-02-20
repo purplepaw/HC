@@ -124,13 +124,13 @@ void setup() {
     routines.add(manager.createRoutine("legs", "Leg workouts"));
     routines.add(manager.createRoutine("arms", "Arm workouts"));
     routines.add(manager.createRoutine("core", "Core workouts"));
-    routines.add(manager.createRoutine("empty", "Empty workouts"));
-    routines.add(manager.createRoutine("empty", "Empty workouts"));
-    routines.add(manager.createRoutine("empty", "Empty workouts"));
-    routines.add(manager.createRoutine("empty", "Empty workouts"));
-    routines.add(manager.createRoutine("empty", "Empty workouts"));
-    routines.add(manager.createRoutine("empty", "Empty workouts"));
-    routines.add(manager.createRoutine("empty", "Empty workouts"));
+    routines.add(manager.createRoutine("empty", "Empty routine"));
+    routines.add(manager.createRoutine("empty", "Empty routine"));
+    routines.add(manager.createRoutine("empty", "Empty routine"));
+    routines.add(manager.createRoutine("empty", "Empty routine"));
+    routines.add(manager.createRoutine("empty", "Empty routine"));
+    routines.add(manager.createRoutine("empty", "Empty routine"));
+    routines.add(manager.createRoutine("empty", "Empty routine"));
 
     gateway.saveWorkoutList(routines, dataPath(""), dataPath("workoutFile.ser"));
   }
