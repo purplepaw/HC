@@ -25,7 +25,7 @@ void setup() {
   
   start = new GButton(this, 3.5 * width / 8, 1.5 * height / 8, width / 8, 0.5 * height / 8);
   start.setVisible(false);
-
+  textAlign(CENTER, CENTER);
 }
 
 /**
@@ -49,10 +49,15 @@ void draw() {
        String name = new UiBooster().showTextInputDialog("What is your name?");
        // TODO: create User entity
        state = 2;
-    } else if (state == 2) {
-       // Display User Dashboard TODO
-       
     }
+  }
+  
+  if (state == 2) {
+       // Display User Dashboard TODO
+       textSize(75);
+       text("Hello, " + "username" + "!", width/2, height/12); // TODO: get username from entity
+       // TODO: display options
+       line(width/8, 1.5 * height/12 + 1, 7 * width/8, 1.5 * height/12 + 3);
   }
 
 }
@@ -80,6 +85,7 @@ void setGradient(int x, int y, float w, float h, color c1, color c2, int axis ) 
   }
 }
 
+// function executed when start is pressed
 public void button_test_click(GButton button, GEvent event) {
    state = 1; 
 }
